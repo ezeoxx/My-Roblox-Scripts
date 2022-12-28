@@ -1,6 +1,5 @@
 import random
 import requests
-import colorama
 import threading
 import os
 count = 0
