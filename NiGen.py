@@ -23,7 +23,7 @@ def sendWebhook(nitrolink):
 
   
 
-print("""
+print("\033[0;35m" """
  _______  .__  ________                ____   ____________  
  \      \ |__|/  _____/  ____   ____   \   \ /   /\_____  \ 
  /   |   \|  /   \  ____/ __ \ /    \   \   Y   /  /  ____/ 
@@ -36,7 +36,7 @@ print("""
 num=input("[?] Input How Many Codes You Want To Generate And Check: ")
 f=open("nitros.txt", "w", encoding='utf-8')
 
-print("""
+print("\033[31m" """
    ___                          _   _             
   / _ \___ _ __   ___ _ __ __ _| |_(_)_ __   __ _ 
  / /_\/ _ \ '_ \ / _ \ '__/ _` | __| | '_ \ / _` |
