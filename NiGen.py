@@ -71,11 +71,13 @@ def checknitro():
 
             r = requests.get(url)
             if os.name == "nt":
+                global coorect
                 ctypes.windll.kernel32.SetConsoleTitleW(
                     f"Nitros Checked - {count} | Nitros Valid - {coorect} | Nitros Failed - {failsed}")
 
             if r.status_code == 200:
                 sendWebhook(url)
+                global coorect
                 coorect = coorect + 1
           
   
